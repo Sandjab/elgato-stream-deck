@@ -1163,13 +1163,13 @@ WantedBy=default.target
 
 ### C. Spécifications matérielles Stream Deck
 
-| Modèle | Touches | Taille image | DeviceType |
-|--------|---------|--------------|------------|
-| Original | 15 (5×3) | 72×72 | 0 |
-| Mini | 6 (3×2) | 80×80 | 1 |
-| XL | 32 (8×4) | 96×96 | 2 |
-| + | 8 + 4 dials | 120×120 | 7 |
-| Neo | 8 (4×2) | — | 9 |
+| Modèle | Touches | Taille image (standard) | Taille image (@2x) | DeviceType |
+|--------|---------|-------------------------|--------------------| -----------|
+| Original | 15 (5×3) | 72×72 | 144×144 | 0 |
+| Mini | 6 (3×2) | 80×80 | 160×160 | 1 |
+| XL | 32 (8×4) | 96×96 | 144×144 | 2 |
+| + | 8 + 4 dials | 120×120 | 240×240 | 7 |
+| Neo | 8 (4×2) | 72×72 | 144×144 | 9 |
 
 ### D. Dépendances
 
