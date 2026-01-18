@@ -39,3 +39,14 @@ Temporary Items
 *.tmp
 *.temp
 *.log
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg

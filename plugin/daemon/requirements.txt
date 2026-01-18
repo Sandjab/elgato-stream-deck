@@ -1,0 +1,7 @@
+# Claude Code Stream Deck XL Daemon Dependencies
+
+# Stream Deck USB HID library
+streamdeck>=0.9.5
+
+# Image processing for icons
+pillow>=10.0.0

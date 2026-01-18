@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Claude Code Stream Deck Daemon - macOS LaunchAgent
+
+  This plist configures the Stream Deck daemon to run automatically
+  when the user logs in.
+
+  Installation:
+    1. Copy to ~/Library/LaunchAgents/
+    2. Update paths to match your installation
+    3. Load with: launchctl load ~/Library/LaunchAgents/com.claude.streamdeck.plist
+
+  Management:
+    - Start: launchctl start com.claude.streamdeck
+    - Stop: launchctl stop com.claude.streamdeck
+    - Unload: launchctl unload ~/Library/LaunchAgents/com.claude.streamdeck.plist
+    - Status: launchctl list | grep streamdeck
+-->
+<plist version="1.0">
+<dict>
+    <!-- Service identifier -->
+    <key>Label</key>
+    <string>com.claude.streamdeck</string>
+
+    <!-- Program to run -->
+    <key>ProgramArguments</key>
+    <array>
+        <!-- Update this path to your virtual environment -->
+        <string>${HOME}/.local/share/claude-streamdeck/venv/bin/python</string>
+        <string>-m</string>
+        <string>claude_streamdeck</string>
+    </array>
+
+    <!-- Working directory -->
+    <key>WorkingDirectory</key>
+    <string>${HOME}/.local/share/claude-streamdeck</string>
+
+    <!-- Start automatically on login -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Restart if it exits -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Throttle restarts (minimum 10 seconds between restarts) -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <!-- Log output -->
+    <key>StandardOutPath</key>
+    <string>${HOME}/.claude/streamdeck.log</string>
+    <key>StandardErrorPath</key>
+    <string>${HOME}/.claude/streamdeck.error.log</string>
+
+    <!-- Environment variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>${HOME}</string>
+    </dict>
+
+    <!-- Process type (background) -->
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <!-- Nice value (lower priority) -->
+    <key>Nice</key>
+    <integer>5</integer>
+</dict>
+</plist>

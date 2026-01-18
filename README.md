@@ -37,22 +37,62 @@ Les images des différents modèles de Stream Deck sont stockées dans [`docs/im
 ./scripts/download-streamdeck-images.sh
 ```
 
+## Plugin Stream Deck XL
+
+Le plugin MVP pour Stream Deck XL est implémenté dans `plugin/`. Il permet de visualiser l'état de Claude Code et d'interagir via les boutons physiques.
+
+### Fonctionnalités testées (2026-01-18)
+
+| Fonctionnalité | Status | Notes |
+|----------------|--------|-------|
+| Affichage des icônes | ✅ | 4 boutons : Status, New, Resume, Stop |
+| Bouton New | ✅ | Ouvre Terminal avec `claude` |
+| Bouton Resume | ✅ | Ouvre Terminal avec `claude --resume` |
+| Bouton Stop | ✅ | Envoie Escape (nécessite permissions Accessibilité) |
+| État idle (vert) | ✅ | Affiché au démarrage de session |
+| État thinking (bleu) | ✅ | Affiché pendant le traitement |
+| État tool_running (orange) | ✅ | Affiche le nom de l'outil |
+| Transitions d'état | ✅ | idle → thinking → tool → thinking → idle |
+
+### Limitations connues
+
+- Les sessions Claude multiples partagent le même affichage d'état
+- Le bouton Stop nécessite les permissions Accessibilité sur macOS
+- Resume utilise `--resume` (liste) au lieu de `--continue` (dernière session)
+
+### Installation rapide
+
+```bash
+cd plugin/daemon
+pip3 install -r requirements.txt
+brew install hidapi  # macOS
+python3 -m claude_streamdeck --debug
+```
+
+Voir [.claude/CLAUDE.md](.claude/CLAUDE.md) pour plus de détails.
+
 ## Structure du projet
 
 ```
 elgato-stream-deck/
 ├── README.md
+├── .claude/
+│   └── CLAUDE.md                         # Contexte projet pour Claude Code
 ├── docs/
 │   ├── streamdeck-specifications.md      # Specs techniques Stream Deck
 │   ├── claude-code-streamdeck-integration-spec.md  # Intégration Claude Code
 │   ├── claude-streamdeck-prd.md          # PRD appli démo
 │   ├── claude-streamdeck-tech-spec.md    # Specs techniques appli démo
 │   └── images/                           # Images des produits
-│       ├── streamdeck-original.png
-│       ├── streamdeck-mini.png
-│       ├── streamdeck-xl.png
-│       ├── streamdeck-plus.png
-│       └── streamdeck-neo.png
+├── plugin/                               # Plugin MVP Stream Deck XL
+│   ├── daemon/                           # Daemon Python
+│   │   └── claude_streamdeck/            # Package principal
+│   ├── hooks/                            # Scripts hook pour Claude Code
+│   ├── assets/icons/96x96/               # Icônes 96x96 pour XL
+│   ├── services/                         # Fichiers service macOS/Linux
+│   ├── tests/                            # Tests unitaires
+│   ├── install.sh                        # Script d'installation
+│   └── uninstall.sh                      # Script de désinstallation
 └── scripts/
     └── download-streamdeck-images.sh     # Script téléchargement images
 ```

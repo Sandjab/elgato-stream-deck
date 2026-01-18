@@ -1,0 +1,60 @@
+# Claude Code Stream Deck Daemon - systemd User Service
+#
+# This service file configures the Stream Deck daemon to run automatically
+# when the user logs in to a graphical session.
+#
+# Installation:
+#   1. Copy to ~/.config/systemd/user/
+#   2. Update paths to match your installation
+#   3. Enable with: systemctl --user enable claude-streamdeck.service
+#   4. Start with: systemctl --user start claude-streamdeck.service
+#
+# Management:
+#   - Status: systemctl --user status claude-streamdeck
+#   - Logs: journalctl --user -u claude-streamdeck
+#   - Stop: systemctl --user stop claude-streamdeck
+#   - Disable: systemctl --user disable claude-streamdeck
+#
+# Note: This is a user service, not a system service.
+#       It runs in the user's session context.
+
+[Unit]
+Description=Claude Code Stream Deck Daemon
+Documentation=https://github.com/anthropics/claude-code
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+# Service type - simple means systemd considers it started immediately
+Type=simple
+
+# Command to run
+# Update this path to your virtual environment
+ExecStart=%h/.local/share/claude-streamdeck/venv/bin/python -m claude_streamdeck
+
+# Working directory
+WorkingDirectory=%h/.local/share/claude-streamdeck
+
+# Restart policy
+Restart=always
+RestartSec=5
+
+# Environment
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="HOME=%h"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+
+# Resource limits
+Nice=5
+CPUQuota=50%
+MemoryMax=256M
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.claude %h/.local/share/claude-streamdeck
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
