@@ -120,13 +120,13 @@ claude-streamdeck/
 │
 ├── assets/
 │   └── icons/
-│       ├── status-inactive.png         # 72x72, gris
-│       ├── status-idle.png             # 72x72, vert
-│       ├── status-thinking.png         # 72x72, bleu
-│       ├── status-tool.png             # 72x72, orange
-│       ├── action-new.png              # 72x72
-│       ├── action-resume.png           # 72x72
-│       └── action-stop.png             # 72x72
+│       ├── status-inactive.png         # 144x144 (@2x), gris
+│       ├── status-idle.png             # 144x144 (@2x), vert
+│       ├── status-thinking.png         # 144x144 (@2x), bleu
+│       ├── status-tool.png             # 144x144 (@2x), orange
+│       ├── action-new.png              # 144x144 (@2x)
+│       ├── action-resume.png           # 144x144 (@2x)
+│       └── action-stop.png             # 144x144 (@2x)
 │
 ├── services/
 │   ├── macos/
@@ -1314,22 +1314,33 @@ echo "Vous pouvez les retirer manuellement si nécessaire."
 
 ### 6.1 Spécifications des icônes
 
-| Fichier | Taille | Couleur dominante | Description |
-|---------|--------|-------------------|-------------|
-| status-inactive.png | 72×72 | Gris (#666666) | Cercle vide ou power off |
-| status-idle.png | 72×72 | Vert (#00AA00) | Checkmark ou cercle plein |
-| status-thinking.png | 72×72 | Bleu (#0066CC) | Cerveau ou points de suspension |
-| status-tool.png | 72×72 | Orange (#FF8800) | Engrenage ou outil |
-| action-new.png | 72×72 | Blanc | Plus (+) |
-| action-resume.png | 72×72 | Blanc | Play (▶) |
-| action-stop.png | 72×72 | Rouge (#CC0000) | Stop (■) ou X |
+> **Note** : Les tailles varient selon le modèle de Stream Deck. Pour une compatibilité maximale,
+> fournir les icônes en haute résolution (@2x) et laisser la bibliothèque redimensionner.
+>
+> | Modèle | Taille standard | Taille @2x (recommandée) |
+> |--------|-----------------|--------------------------|
+> | Original | 72×72 | 144×144 |
+> | Mini | 80×80 | 160×160 |
+> | XL | 96×96 | 144×144 |
+> | + | 120×120 | 240×240 |
+> | Neo | 72×72 | 144×144 |
+
+| Fichier | Taille recommandée | Couleur dominante | Description |
+|---------|-------------------|-------------------|-------------|
+| status-inactive.png | 144×144 | Gris (#666666) | Cercle vide ou power off |
+| status-idle.png | 144×144 | Vert (#00AA00) | Checkmark ou cercle plein |
+| status-thinking.png | 144×144 | Bleu (#0066CC) | Cerveau ou points de suspension |
+| status-tool.png | 144×144 | Orange (#FF8800) | Engrenage ou outil |
+| action-new.png | 144×144 | Blanc | Plus (+) |
+| action-resume.png | 144×144 | Blanc | Play (▶) |
+| action-stop.png | 144×144 | Rouge (#CC0000) | Stop (■) ou X |
 
 ### 6.2 Format
 
 - PNG avec transparence (RGBA)
 - Fond transparent ou noir (#000000)
 - Icône centrée
-- Marge de 4px minimum
+- Marge de 8px minimum (ajustée pour haute résolution)
 
 ---
 

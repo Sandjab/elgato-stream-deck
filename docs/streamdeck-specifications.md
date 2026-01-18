@@ -26,7 +26,41 @@ Ce document compile les spécifications techniques pour travailler programmatiqu
 
 ## 1. Modèles de périphériques
 
-### Identifiants USB
+> **Note** : Pour télécharger les images des produits, exécutez le script `scripts/download-streamdeck-images.sh`
+
+### Gamme Stream Deck
+
+#### Stream Deck Original (15 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Original](images/streamdeck-original.png) | **DeviceType** : 0<br>**Product ID** : 0x0060 (V1), 0x006D (V2)<br>**Touches** : 15 (5×3)<br>**Taille icône** : 72×72 (standard), 144×144 (@2x)<br>**Format image** : BMP (V1), JPEG (V2)<br>**Lien** : [elgato.com/p/stream-deck](https://www.elgato.com/us/en/p/stream-deck) |
+
+#### Stream Deck Mini (6 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Mini](images/streamdeck-mini.png) | **DeviceType** : 1<br>**Product ID** : 0x0063<br>**Touches** : 6 (3×2)<br>**Taille icône** : 80×80 (standard), 160×160 (@2x)<br>**Format image** : BMP (rotation 90° CW, mirroring H+V)<br>**Lien** : [elgato.com/p/stream-deck-mini](https://www.elgato.com/us/en/p/stream-deck-mini) |
+
+#### Stream Deck XL (32 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck XL](images/streamdeck-xl.png) | **DeviceType** : 2<br>**Product ID** : 0x006C<br>**Touches** : 32 (8×4)<br>**Taille icône** : 96×96 (standard), 144×144 (@2x)<br>**Format image** : JPEG<br>**Lien** : [elgato.com/p/stream-deck-xl](https://www.elgato.com/us/en/p/stream-deck-xl) |
+
+#### Stream Deck + (8 touches + 4 molettes)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Plus](images/streamdeck-plus.png) | **DeviceType** : 7<br>**Product ID** : 0x0084<br>**Touches** : 8 (4×2) + 4 molettes + écran tactile<br>**Taille icône** : 120×120 (standard), 240×240 (@2x)<br>**Écran tactile** : 800×100 px<br>**Format image** : JPEG<br>**Lien** : [elgato.com/p/stream-deck-plus](https://www.elgato.com/us/en/p/stream-deck-plus) |
+
+#### Stream Deck Neo (8 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Neo](images/streamdeck-neo.png) | **DeviceType** : 9<br>**Product ID** : —<br>**Touches** : 8 (4×2) + Infobar + 2 Touch Points<br>**Taille icône** : 72×72 (standard), 144×144 (@2x)<br>**Lien** : [elgato.com/p/stream-deck-neo](https://www.elgato.com/us/en/p/stream-deck-neo) |
+
+### Tableau récapitulatif - Identifiants USB
 
 | Modèle | DeviceType | Product ID (PID) | Touches | Disposition | Taille image |
 |--------|------------|------------------|---------|-------------|--------------|
@@ -40,7 +74,7 @@ Ce document compile les spécifications techniques pour travailler programmatiqu
 | Corsair Voyager | 6 | — | — | — | — |
 | Stream Deck + | 7 | 0x0084 | 8 + 4 dials | 4×2 + écran | 120×120 px |
 | SCUF Controller | 8 | — | — | — | — |
-| Stream Deck Neo | 9 | — | 8 | 4×2 | — |
+| Stream Deck Neo | 9 | — | 8 | 4×2 | 72×72 px |
 | Stream Deck Studio | 10 | — | — | — | — |
 | Virtual Stream Deck | 11 | — | Variable | — | — |
 
@@ -48,14 +82,15 @@ Ce document compile les spécifications techniques pour travailler programmatiqu
 
 ### Spécifications d'images par modèle
 
-| Modèle | Format | Taille touche | Rotation | Mirroring |
-|--------|--------|---------------|----------|-----------|
-| Original V1 | BMP | 72×72 | Non | Non |
-| Original V2 | JPEG | 72×72 | Non | Non |
-| Mini | BMP | 80×80 | 90° CW | H+V |
-| XL | JPEG | 96×96 | Non | Non |
-| + (touches) | JPEG | 120×120 | Non | Non |
-| + (écran) | JPEG | 800×100 | Non | Non |
+| Modèle | Format | Taille standard | Taille @2x | Rotation | Mirroring |
+|--------|--------|-----------------|------------|----------|-----------|
+| Original V1 | BMP | 72×72 | 144×144 | Non | Non |
+| Original V2 | JPEG | 72×72 | 144×144 | Non | Non |
+| Mini | BMP | 80×80 | 160×160 | 90° CW | H+V |
+| XL | JPEG | 96×96 | 144×144 | Non | Non |
+| + (touches) | JPEG | 120×120 | 240×240 | Non | Non |
+| + (écran) | JPEG | 800×100 | — | Non | Non |
+| Neo | — | 72×72 | 144×144 | Non | Non |
 
 ---
 

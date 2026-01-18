@@ -1163,13 +1163,47 @@ WantedBy=default.target
 
 ### C. Spécifications matérielles Stream Deck
 
-| Modèle | Touches | Taille image | DeviceType |
-|--------|---------|--------------|------------|
-| Original | 15 (5×3) | 72×72 | 0 |
-| Mini | 6 (3×2) | 80×80 | 1 |
-| XL | 32 (8×4) | 96×96 | 2 |
-| + | 8 + 4 dials | 120×120 | 7 |
-| Neo | 8 (4×2) | — | 9 |
+> **Note** : Pour télécharger les images des produits, exécutez le script `scripts/download-streamdeck-images.sh`
+
+#### Stream Deck Original (15 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Original](images/streamdeck-original.png) | **Touches** : 15 (5×3)<br>**Taille icône** : 72×72 (standard), 144×144 (@2x)<br>**DeviceType** : 0<br>**Lien** : [elgato.com/p/stream-deck](https://www.elgato.com/us/en/p/stream-deck) |
+
+#### Stream Deck Mini (6 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Mini](images/streamdeck-mini.png) | **Touches** : 6 (3×2)<br>**Taille icône** : 80×80 (standard), 160×160 (@2x)<br>**DeviceType** : 1<br>**Lien** : [elgato.com/p/stream-deck-mini](https://www.elgato.com/us/en/p/stream-deck-mini) |
+
+#### Stream Deck XL (32 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck XL](images/streamdeck-xl.png) | **Touches** : 32 (8×4)<br>**Taille icône** : 96×96 (standard), 144×144 (@2x)<br>**DeviceType** : 2<br>**Lien** : [elgato.com/p/stream-deck-xl](https://www.elgato.com/us/en/p/stream-deck-xl) |
+
+#### Stream Deck + (8 touches + 4 molettes)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Plus](images/streamdeck-plus.png) | **Touches** : 8 + 4 molettes + écran tactile<br>**Taille icône** : 120×120 (standard), 240×240 (@2x)<br>**DeviceType** : 7<br>**Lien** : [elgato.com/p/stream-deck-plus](https://www.elgato.com/us/en/p/stream-deck-plus) |
+
+#### Stream Deck Neo (8 touches)
+
+| | Spécifications |
+|:---:|:---|
+| ![Stream Deck Neo](images/streamdeck-neo.png) | **Touches** : 8 (4×2) + Infobar + 2 Touch Points<br>**Taille icône** : 72×72 (standard), 144×144 (@2x)<br>**DeviceType** : 9<br>**Lien** : [elgato.com/p/stream-deck-neo](https://www.elgato.com/us/en/p/stream-deck-neo) |
+
+#### Tableau récapitulatif
+
+| Modèle | Touches | Taille image (standard) | Taille image (@2x) | DeviceType |
+|--------|---------|-------------------------|--------------------| -----------|
+| Original | 15 (5×3) | 72×72 | 144×144 | 0 |
+| Mini | 6 (3×2) | 80×80 | 160×160 | 1 |
+| XL | 32 (8×4) | 96×96 | 144×144 | 2 |
+| + | 8 + 4 dials | 120×120 | 240×240 | 7 |
+| Neo | 8 (4×2) | 72×72 | 144×144 | 9 |
 
 ### D. Dépendances
 
