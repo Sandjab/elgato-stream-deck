@@ -21,6 +21,10 @@ class DeviceManager:
 
     def __init__(self) -> None:
         self._devices: dict[str, Device] = {}
+        # Maps stable HID-level id (DevSrvsID:... on macOS) to our dev_id, so the
+        # reconnect loop can skip devices we've already wrapped without retrying
+        # `hid.open()` on them (which the lib rejects on a second call).
+        self._known_hid_ids: dict[str, str] = {}
 
     def enumerate(self) -> list[Device]:
         out: list[Device] = []
@@ -31,6 +35,9 @@ class DeviceManager:
             return out
         for hid in raw:
             try:
+                hid_id = hid.id()  # stable, no open required
+                if hid_id in self._known_hid_ids:
+                    continue
                 deck_type = hid.deck_type()
                 model = _MODEL_BY_DECK_TYPE.get(deck_type)
                 if model is None:
@@ -46,6 +53,7 @@ class DeviceManager:
                 else:
                     continue  # other models not implemented yet
                 self._devices[dev_id] = device
+                self._known_hid_ids[hid_id] = dev_id
                 out.append(device)
             except Exception:
                 logger.exception("Failed to wrap HID device")
@@ -69,3 +77,7 @@ class DeviceManager:
                 d.close()
             except Exception:
                 logger.exception("Failed to close device %s", device_id)
+        # Forget the HID id mapping so a future reconnect can re-wrap.
+        for hid_id, mapped in list(self._known_hid_ids.items()):
+            if mapped == device_id:
+                del self._known_hid_ids[hid_id]
