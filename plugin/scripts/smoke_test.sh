@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Manual smoke test: requires a Stream Deck XL plugged in.
-# Run the daemon in another terminal first:
-#   .venv/bin/python -m claude_streamdeck --debug
+# Manual smoke test: requires a Stream Deck XL plugged in (and the
+# Elgato app quitted so the HID handle is free).
+# Run the daemon in another terminal first, from the repo root:
+#   PYTHONPATH=plugin/daemon .venv/bin/python -m claude_streamdeck --debug
 
 set -euo pipefail
 
