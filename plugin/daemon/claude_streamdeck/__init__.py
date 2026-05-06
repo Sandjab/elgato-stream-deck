@@ -1,8 +1,3 @@
-"""Claude Code Stream Deck XL Plugin.
+"""Stream Deck core daemon — generic, extensible, multi-model."""
 
-A daemon that controls Stream Deck XL hardware via USB HID
-to display Claude Code session state and provide quick actions.
-"""
-
-__version__ = "1.0.0"
-__author__ = "Claude Code"
+__version__ = "0.2.0"
