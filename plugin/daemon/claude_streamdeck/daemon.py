@@ -78,6 +78,12 @@ class Daemon:
             self._wire_device(d)
 
     def _wire_device(self, device: Device) -> None:
+        # Ensure the device is registered with the manager so that
+        # handlers that resolve devices via `DeviceManager.first/get/all`
+        # can find it. The real `enumerate()` already populates `_devices`,
+        # but mocked or test-injected paths may not — so we make the
+        # registration idempotent here.
+        self.devices._devices[device.id] = device
         self.display.register_device(device)
         self.input.attach(device)
         # Fire connected event (publish via bus on the loop).
