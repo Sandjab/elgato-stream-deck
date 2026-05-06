@@ -14,9 +14,10 @@ if [[ ! -S "$SOCKET" ]]; then
 fi
 
 # Send a command, read one response (one line of JSON).
+# `nc -w 1` works on both BSD (macOS) and GNU nc — closes after 1s of silence.
 send() {
   local payload="$1"
-  echo "$payload" | nc -U "$SOCKET" -q 1 | head -n 1
+  echo "$payload" | nc -U "$SOCKET" -w 1 | head -n 1
 }
 
 echo "1. system.ping"

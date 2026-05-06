@@ -36,6 +36,8 @@ class DeviceManager:
                 if model is None:
                     logger.info("Skipping unsupported model: %s", deck_type)
                     continue
+                # Reading the serial requires the HID handle to be open.
+                hid.open()
                 serial = hid.get_serial_number().strip().strip("\x00")
                 dev_id = f"{model.value}-{serial}"
                 device: Device
